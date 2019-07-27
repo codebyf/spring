@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class LifeCycle {
+public class IOCTest_LifeCycle {
     @Test
     public void test(){
         // 1、创建IOC容器
