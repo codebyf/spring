@@ -47,6 +47,7 @@ import org.springframework.context.annotation.Primary;
  *          把Spring底层一些组件注入到自定义的Bean中：
  *              xxxAware：功能使用xxxProcessor：
  *                  ApplicationContextAware ===> ApplicationContextAwareProcessor
+ *
  */
 @Configuration
 @ComponentScan(value = {"com.byf.dao","com.byf.service","com.byf.controller"})
