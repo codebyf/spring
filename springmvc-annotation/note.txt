@@ -1,0 +1,23 @@
+1、web容器在启动的时候回加载：/META-INF/services/javax.servlet.ServletContainerInitializer
+2、加载这个文件制定的类：org.springframework.web.SpringServletContainerInitializer
+3、spring的应用一启动就会加载应用感兴趣的@HandlesTypes(WebApplicationInitializer.class)
+4、并且为WebApplicationInitializer组件对象
+	1）AbstractContextLoaderInitializer：创建根容器;
+		WebApplicationContext rootAppContext = createRootApplicationContext();
+	2）AbstractDispatcherServletInitializer
+		创建一个web的ioc容器：
+		WebApplicationContext servletAppContext = createServletApplicationContext();
+		创建DispatcherServlet：createDispatcherServlet(servletAppContext);
+		将他创建的DispatcherServlet添加到ServletContext中；
+			getServletMappings();
+	3）AbstractAnnotationConfigDispatcherServletInitializer：注解方式的DispatcherServlet初始化器
+		创建根容器:createRootApplicationContext() 
+			getRootConfigClasses();传入一个配置类
+			new AnnotationConfigWebApplicationContext();
+		创建web的ioc容器：
+			createServletApplicationContext() 
+			获取配置类：getServletConfigClasses();
+总结：
+	以注解方式启动SpringMVC：继承AbstractAnnotationConfigDispatcherServletInitializer；
+实现抽象方法指定DispatcherServlet的配置信息
+	
